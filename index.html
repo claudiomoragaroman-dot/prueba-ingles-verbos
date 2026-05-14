@@ -35,7 +35,7 @@
                     <div class="text-xl font-bold text-gray-700">Class: <input type="text" class="w-32" value="4th Grade"></div>
                 </div>
                 <div id="score-box" class="w-32 h-32 rounded-full border-4 border-dashed border-gray-300 flex items-center justify-center text-3xl font-black text-gray-400 transform rotate-6 bg-white transition-all duration-300">
-                    0 / 12
+                    0 / 16
                 </div>
             </div>
 
@@ -174,10 +174,10 @@
     <script>
         let currentLevel = 1;
         
-        // Strictly uses ONLY the 24 verbs from the provided image
+        // Corrected exact counts of input fields per level!
         const levelData = {
             1: {
-                total: 12,
+                total: 16,
                 answers: {
                     'l1-p1-v1': 'moved', 'l1-p1-t1': 'regular', 'l1-p1-v2': 'kept', 'l1-p1-t2': 'irregular',
                     'l1-p1-v3': 'pulled', 'l1-p1-t3': 'regular', 'l1-p1-v4': 'knew', 'l1-p1-t4': 'irregular',
@@ -187,7 +187,7 @@
                 alts: { 'l1-p2-3': ['travelled', 'traveled'] }
             },
             2: {
-                total: 12,
+                total: 16,
                 answers: {
                     'l2-p1-v1': 'opened', 'l2-p1-t1': 'regular', 'l2-p1-v2': 'got', 'l2-p1-t2': 'irregular',
                     'l2-p1-v3': 'studied', 'l2-p1-t3': 'regular', 'l2-p1-v4': 'lost', 'l2-p1-t4': 'irregular',
@@ -196,7 +196,7 @@
                 }, alts: {}
             },
             3: {
-                total: 13,
+                total: 17,
                 answers: {
                     'l3-p1-v1': 'sold', 'l3-p1-t1': 'irregular', 'l3-p1-v2': 'started', 'l3-p1-t2': 'regular',
                     'l3-p1-v3': 'heard', 'l3-p1-t3': 'irregular', 'l3-p1-v4': 'got', 'l3-p1-t4': 'irregular',
