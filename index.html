@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verb Quiz - Practice for a 7.0! 🌟</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;900&family=Kalam:wght@700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Nunito', sans-serif; background-color: #f0fdf4; }
+        .handwriting { font-family: 'Kalam', cursive; color: #4f46e5; }
+        .quiz-container { background-image: radial-gradient(#e5e7eb 1px, transparent 1px); background-size: 20px 20px; }
+        input[type="text"], select { 
+            border: none; 
+            border-bottom: 2px dashed #a855f7; 
+            background: transparent; 
+            text-align: center;
+            font-family: 'Kalam', cursive;
+            font-size: 1.1rem;
+            color: #2563eb;
+        }
+        input[type="text"]:focus, select:focus { outline: none; border-bottom: 2px solid #ec4899; }
+        .correct { border-bottom: 2px solid #22c55e !important; color: #16a34a !important; }
+        .incorrect { border-bottom: 2px solid #ef4444 !important; color: #dc2626 !important; }
+    </style>
+</head>
+<body class="py-10 px-4">
+
+    <div class="max-w-4xl mx-auto bg-white rounded-3xl shadow-xl overflow-hidden border-4 border-purple-400 quiz-container relative pb-10">
+        
+        <!-- Header -->
+        <div class="bg-purple-100 p-6 border-b-4 border-purple-400 text-center relative">
+            <h1 class="text-4xl font-black text-purple-600 tracking-wider">✨ Verb Quiz Practice ✨</h1>
+            <p class="text-lg text-purple-500 font-bold mt-2">Let's get that 7.0!</p>
+        </div>
+
+        <div class="p-8">
+            <!-- Student Info -->
+            <div class="flex justify-between items-end mb-8 border-2 border-purple-200 rounded-xl p-4 bg-purple-50">
+                <div class="space-y-4 w-2/3">
+                    <div class="text-xl font-bold text-gray-700">Name: <input type="text" class="w-64" placeholder="Tu nombre aquí..."></div>
+                    <div class="text-xl font-bold text-gray-700">Class: <input type="text" class="w-32" value="4th Grade"></div>
+                </div>
+                <div id="score-box" class="w-32 h-32 rounded-full border-4 border-dashed border-gray-300 flex items-center justify-center text-4xl font-black text-gray-300 transform rotate-12 transition-all duration-500">
+                    ? / 17
+                </div>
+            </div>
+
+            <!-- Part 1: Chart -->
+            <div class="mb-10 border-2 border-blue-400 rounded-2xl overflow-hidden">
+                <div class="bg-blue-100 p-3 font-bold text-blue-800 text-lg">
+                    1. Complete the chart with the verb form in the past and say if they are regular or irregular. 📝
+                </div>
+                <table class="w-full text-center border-collapse">
+                    <thead>
+                        <tr class="bg-blue-50 text-blue-900 border-b-2 border-blue-200">
+                            <th class="p-3 border-r-2 border-blue-200">INFINITIVE</th>
+                            <th class="p-3 border-r-2 border-blue-200">PAST</th>
+                            <th class="p-3">REGULAR / IRREGULAR</th>
+                        </tr>
+                    </thead>
+                    <tbody class="text-lg text-gray-700 font-bold">
+                        <tr class="border-b-2 border-blue-100">
+                            <td class="p-4 border-r-2 border-blue-100">Move</td>
+                            <td class="p-4 border-r-2 border-blue-100"><input type="text" id="p1-v1" class="w-32" autocomplete="off"></td>
+                            <td class="p-4">
+                                <select id="p1-t1" class="w-32">
+                                    <option value="">Choose...</option>
+                                    <option value="regular">Regular</option>
+                                    <option value="irregular">Irregular</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr class="border-b-2 border-blue-100">
+                            <td class="p-4 border-r-2 border-blue-100">Keep</td>
+                            <td class="p-4 border-r-2 border-blue-100"><input type="text" id="p1-v2" class="w-32" autocomplete="off"></td>
+                            <td class="p-4">
+                                <select id="p1-t2" class="w-32">
+                                    <option value="">Choose...</option>
+                                    <option value="regular">Regular</option>
+                                    <option value="irregular">Irregular</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr class="border-b-2 border-blue-100">
+                            <td class="p-4 border-r-2 border-blue-100">Pull</td>
+                            <td class="p-4 border-r-2 border-blue-100"><input type="text" id="p1-v3" class="w-32" autocomplete="off"></td>
+                            <td class="p-4">
+                                <select id="p1-t3" class="w-32">
+                                    <option value="">Choose...</option>
+                                    <option value="regular">Regular</option>
+                                    <option value="irregular">Irregular</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="p-4 border-r-2 border-blue-100">Know</td>
+                            <td class="p-4 border-r-2 border-blue-100"><input type="text" id="p1-v4" class="w-32" autocomplete="off"></td>
+                            <td class="p-4">
+                                <select id="p1-t4" class="w-32">
+                                    <option value="">Choose...</option>
+                                    <option value="regular">Regular</option>
+                                    <option value="irregular">Irregular</option>
+                                </select>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Part 2: Sentences -->
+            <div class="mb-10 border-2 border-pink-400 rounded-2xl overflow-hidden">
+                <div class="bg-pink-100 p-3 font-bold text-pink-800 text-lg">
+                    2. Complete the sentences with the verb in the past. ✍️
+                </div>
+                <div class="p-6 space-y-6 text-xl font-bold text-gray-700">
+                    <p>1. Yesterday I <input type="text" id="p2-1" class="w-32 mx-2"> (play) video games.</p>
+                    <p>2. My mom <input type="text" id="p2-2" class="w-32 mx-2"> (give) me a delicious apple.</p>
+                    <p>3. We <input type="text" id="p2-3" class="w-32 mx-2"> (travel) to the beach last summer.</p>
+                    <p>4. I <input type="text" id="p2-4" class="w-32 mx-2"> (swim) in the swimming pool.</p>
+                    <p>5. The big tree <input type="text" id="p2-5" class="w-32 mx-2"> (grow) very fast.</p>
+                </div>
+            </div>
+
+            <!-- Part 3: Challenge -->
+            <div class="mb-10 border-2 border-orange-400 rounded-2xl overflow-hidden">
+                <div class="bg-orange-100 p-3 font-black text-orange-800 text-lg flex items-center gap-2">
+                    🚨 CHALLENGE! 🚨 <span class="text-sm font-normal bg-white px-3 py-1 rounded-full border border-orange-300">go - need - hear - hold</span>
+                </div>
+                <div class="p-6 text-xl font-bold text-gray-700 leading-loose">
+                    On Sunday we <input type="text" id="p3-1" class="w-24 mx-2"> to the park. I <input type="text" id="p3-2" class="w-24 mx-2"> to rest, so I sat on the grass. Suddenly, I <input type="text" id="p3-3" class="w-24 mx-2"> a little bird singing. I <input type="text" id="p3-4" class="w-24 mx-2"> a beautiful flower in my hand.
+                </div>
+            </div>
+
+            <!-- Submit Button -->
+            <div class="text-center mt-10">
+                <button onclick="checkAnswers()" class="bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white font-black text-2xl py-4 px-12 rounded-full shadow-lg transform transition hover:scale-105 active:scale-95">
+                    Check Answers! 🚀
+                </button>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        function checkAnswers() {
+            let score = 0;
+            const totalPoints = 17;
+
+            // Strict Answers Dictionary based ONLY on the provided image
+            const answers = {
+                // Part 1
+                'p1-v1': 'moved', 'p1-t1': 'regular',
+                'p1-v2': 'kept', 'p1-t2': 'irregular',
+                'p1-v3': 'pulled', 'p1-t3': 'regular',
+                'p1-v4': 'knew', 'p1-t4': 'irregular',
+                
+                // Part 2
+                'p2-1': 'played',
+                'p2-2': 'gave',
+                'p2-3': 'travelled', // British spelling
+                'p2-4': 'swam',
+                'p2-5': 'grew',
+
+                // Part 3
+                'p3-1': 'went',
+                'p3-2': 'needed',
+                'p3-3': 'heard',
+                'p3-4': 'held'
+            };
+
+            const alternatives = {
+                'p2-3': ['travelled', 'traveled'] 
+            };
+
+            for (const [id, correctVal] of Object.entries(answers)) {
+                const el = document.getElementById(id);
+                const userVal = el.value.trim().toLowerCase();
+                
+                el.classList.remove('correct', 'incorrect');
+
+                let isCorrect = (userVal === correctVal);
+                
+                if (!isCorrect && alternatives[id] && alternatives[id].includes(userVal)) {
+                    isCorrect = true;
+                }
+
+                if (isCorrect) {
+                    el.classList.add('correct');
+                    score++;
+                } else {
+                    el.classList.add('incorrect');
+                }
+            }
+
+            const scoreBox = document.getElementById('score-box');
+            scoreBox.innerHTML = `${score} / ${totalPoints}`;
+            
+            if (score === totalPoints) {
+                scoreBox.className = "w-32 h-32 rounded-full border-4 border-green-500 flex items-center justify-center text-5xl font-black text-green-600 transform -rotate-12 transition-all duration-500 bg-green-100 shadow-xl";
+                scoreBox.innerHTML = "7.0!";
+                setTimeout(() => alert("¡FELICITACIONES! Tienes un 7.0 🎉🥇 Eres una súper estudiante."), 300);
+            } else if (score >= totalPoints * 0.6) {
+                scoreBox.className = "w-32 h-32 rounded-full border-4 border-blue-500 flex items-center justify-center text-4xl font-black text-blue-600 transform -rotate-12 transition-all duration-500 bg-blue-100";
+                setTimeout(() => alert("¡Muy bien! Estás muy cerca del 7.0. Revisa las que están en rojo y vuelve a intentar. 💪"), 300);
+            } else {
+                scoreBox.className = "w-32 h-32 rounded-full border-4 border-orange-500 flex items-center justify-center text-4xl font-black text-orange-600 transform rotate-12 transition-all duration-500 bg-orange-100";
+                setTimeout(() => alert("¡No te rindas! Sigue practicando los verbos, tú puedes. 🌟"), 300);
+            }
+        }
+    </script>
+</body>
+</html>
