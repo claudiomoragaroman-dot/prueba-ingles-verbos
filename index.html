@@ -3,141 +3,168 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Verb Quiz - Practice for a 7.0! 🌟</title>
-    <!-- Tailwind CSS -->
+    <title>Verb Quiz - Level Up! 🌟</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;900&family=Kalam:wght@700&display=swap" rel="stylesheet">
     <style>
         body { font-family: 'Nunito', sans-serif; background-color: #f0fdf4; }
-        .handwriting { font-family: 'Kalam', cursive; color: #4f46e5; }
         .quiz-container { background-image: radial-gradient(#e5e7eb 1px, transparent 1px); background-size: 20px 20px; }
         input[type="text"], select { 
-            border: none; 
-            border-bottom: 2px dashed #a855f7; 
-            background: transparent; 
-            text-align: center;
-            font-family: 'Kalam', cursive;
-            font-size: 1.1rem;
-            color: #2563eb;
+            border: none; border-bottom: 2px dashed #a855f7; background: transparent; 
+            text-align: center; font-family: 'Kalam', cursive; font-size: 1.1rem; color: #2563eb;
         }
         input[type="text"]:focus, select:focus { outline: none; border-bottom: 2px solid #ec4899; }
         .correct { border-bottom: 2px solid #22c55e !important; color: #16a34a !important; }
         .incorrect { border-bottom: 2px solid #ef4444 !important; color: #dc2626 !important; }
+        .hidden { display: none !important; }
     </style>
 </head>
 <body class="py-10 px-4">
 
     <div class="max-w-4xl mx-auto bg-white rounded-3xl shadow-xl overflow-hidden border-4 border-purple-400 quiz-container relative pb-10">
         
-        <!-- Header -->
-        <div class="bg-purple-100 p-6 border-b-4 border-purple-400 text-center relative">
-            <h1 class="text-4xl font-black text-purple-600 tracking-wider">✨ Verb Quiz Practice ✨</h1>
-            <p class="text-lg text-purple-500 font-bold mt-2">Let's get that 7.0!</p>
+        <div class="bg-purple-100 p-6 border-b-4 border-purple-400 text-center">
+            <h1 class="text-4xl font-black text-purple-600 tracking-wider">✨ English Verb Quest ✨</h1>
+            <p class="text-lg text-purple-500 font-bold mt-2" id="level-title">Level 1: The First 12 Verbs</p>
         </div>
 
         <div class="p-8">
-            <!-- Student Info -->
-            <div class="flex justify-between items-end mb-8 border-2 border-purple-200 rounded-xl p-4 bg-purple-50">
+            <div id="student-info" class="flex justify-between items-end mb-8 border-2 border-purple-200 rounded-xl p-4 bg-purple-50">
                 <div class="space-y-4 w-2/3">
-                    <div class="text-xl font-bold text-gray-700">Name: <input type="text" class="w-64" placeholder="Tu nombre aquí..."></div>
+                    <div class="text-xl font-bold text-gray-700">Name: <input type="text" class="w-64" placeholder="Antonia..."></div>
                     <div class="text-xl font-bold text-gray-700">Class: <input type="text" class="w-32" value="4th Grade"></div>
                 </div>
-                <div id="score-box" class="w-32 h-32 rounded-full border-4 border-dashed border-gray-300 flex items-center justify-center text-4xl font-black text-gray-300 transform rotate-12 transition-all duration-500">
-                    ? / 17
+                <div id="score-box" class="w-32 h-32 rounded-full border-4 border-dashed border-gray-300 flex items-center justify-center text-3xl font-black text-gray-400 transform rotate-6 bg-white transition-all duration-300">
+                    0 / 12
                 </div>
             </div>
 
-            <!-- Part 1: Chart -->
-            <div class="mb-10 border-2 border-blue-400 rounded-2xl overflow-hidden">
-                <div class="bg-blue-100 p-3 font-bold text-blue-800 text-lg">
-                    1. Complete the chart with the verb form in the past and say if they are regular or irregular. 📝
-                </div>
-                <table class="w-full text-center border-collapse">
-                    <thead>
+            <div id="level-1" class="level-section">
+                <div class="mb-8 border-2 border-blue-400 rounded-2xl overflow-hidden">
+                    <div class="bg-blue-100 p-3 font-bold text-blue-800 text-lg">1. Complete the chart 📝</div>
+                    <table class="w-full text-center border-collapse">
                         <tr class="bg-blue-50 text-blue-900 border-b-2 border-blue-200">
-                            <th class="p-3 border-r-2 border-blue-200">INFINITIVE</th>
-                            <th class="p-3 border-r-2 border-blue-200">PAST</th>
-                            <th class="p-3">REGULAR / IRREGULAR</th>
+                            <th class="p-2 border-r-2 border-blue-200">INFINITIVE</th><th class="p-2 border-r-2 border-blue-200">PAST</th><th class="p-2">REGULAR / IRREGULAR</th>
                         </tr>
-                    </thead>
-                    <tbody class="text-lg text-gray-700 font-bold">
-                        <tr class="border-b-2 border-blue-100">
-                            <td class="p-4 border-r-2 border-blue-100">Move</td>
-                            <td class="p-4 border-r-2 border-blue-100"><input type="text" id="p1-v1" class="w-32" autocomplete="off"></td>
-                            <td class="p-4">
-                                <select id="p1-t1" class="w-32">
-                                    <option value="">Choose...</option>
-                                    <option value="regular">Regular</option>
-                                    <option value="irregular">Irregular</option>
-                                </select>
-                            </td>
-                        </tr>
-                        <tr class="border-b-2 border-blue-100">
-                            <td class="p-4 border-r-2 border-blue-100">Keep</td>
-                            <td class="p-4 border-r-2 border-blue-100"><input type="text" id="p1-v2" class="w-32" autocomplete="off"></td>
-                            <td class="p-4">
-                                <select id="p1-t2" class="w-32">
-                                    <option value="">Choose...</option>
-                                    <option value="regular">Regular</option>
-                                    <option value="irregular">Irregular</option>
-                                </select>
-                            </td>
-                        </tr>
-                        <tr class="border-b-2 border-blue-100">
-                            <td class="p-4 border-r-2 border-blue-100">Pull</td>
-                            <td class="p-4 border-r-2 border-blue-100"><input type="text" id="p1-v3" class="w-32" autocomplete="off"></td>
-                            <td class="p-4">
-                                <select id="p1-t3" class="w-32">
-                                    <option value="">Choose...</option>
-                                    <option value="regular">Regular</option>
-                                    <option value="irregular">Irregular</option>
-                                </select>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="p-4 border-r-2 border-blue-100">Know</td>
-                            <td class="p-4 border-r-2 border-blue-100"><input type="text" id="p1-v4" class="w-32" autocomplete="off"></td>
-                            <td class="p-4">
-                                <select id="p1-t4" class="w-32">
-                                    <option value="">Choose...</option>
-                                    <option value="regular">Regular</option>
-                                    <option value="irregular">Irregular</option>
-                                </select>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-
-            <!-- Part 2: Sentences -->
-            <div class="mb-10 border-2 border-pink-400 rounded-2xl overflow-hidden">
-                <div class="bg-pink-100 p-3 font-bold text-pink-800 text-lg">
-                    2. Complete the sentences with the verb in the past. ✍️
+                        <tbody class="text-lg font-bold">
+                            <tr class="border-b-2 border-blue-100"><td class="p-3 border-r-2 border-blue-100">Move</td><td class="p-3 border-r-2 border-blue-100"><input type="text" id="l1-p1-v1" class="w-28"></td><td class="p-3"><select id="l1-p1-t1"><option value="">...</option><option value="regular">Regular</option><option value="irregular">Irregular</option></select></td></tr>
+                            <tr class="border-b-2 border-blue-100"><td class="p-3 border-r-2 border-blue-100">Keep</td><td class="p-3 border-r-2 border-blue-100"><input type="text" id="l1-p1-v2" class="w-28"></td><td class="p-3"><select id="l1-p1-t2"><option value="">...</option><option value="regular">Regular</option><option value="irregular">Irregular</option></select></td></tr>
+                            <tr class="border-b-2 border-blue-100"><td class="p-3 border-r-2 border-blue-100">Pull</td><td class="p-3 border-r-2 border-blue-100"><input type="text" id="l1-p1-v3" class="w-28"></td><td class="p-3"><select id="l1-p1-t3"><option value="">...</option><option value="regular">Regular</option><option value="irregular">Irregular</option></select></td></tr>
+                            <tr><td class="p-3 border-r-2 border-blue-100">Know</td><td class="p-3 border-r-2 border-blue-100"><input type="text" id="l1-p1-v4" class="w-28"></td><td class="p-3"><select id="l1-p1-t4"><option value="">...</option><option value="regular">Regular</option><option value="irregular">Irregular</option></select></td></tr>
+                        </tbody>
+                    </table>
                 </div>
-                <div class="p-6 space-y-6 text-xl font-bold text-gray-700">
-                    <p>1. Yesterday I <input type="text" id="p2-1" class="w-32 mx-2"> (play) video games.</p>
-                    <p>2. My mom <input type="text" id="p2-2" class="w-32 mx-2"> (give) me a delicious apple.</p>
-                    <p>3. We <input type="text" id="p2-3" class="w-32 mx-2"> (travel) to the beach last summer.</p>
-                    <p>4. I <input type="text" id="p2-4" class="w-32 mx-2"> (swim) in the swimming pool.</p>
-                    <p>5. The big tree <input type="text" id="p2-5" class="w-32 mx-2"> (grow) very fast.</p>
+
+                <div class="mb-8 border-2 border-pink-400 rounded-2xl overflow-hidden">
+                    <div class="bg-pink-100 p-3 font-bold text-pink-800 text-lg">2. Complete the sentences ✍️</div>
+                    <div class="p-4 space-y-4 text-xl font-bold text-gray-700">
+                        <p>1. Yesterday I <input type="text" id="l1-p2-1" class="w-28"> (play) video games.</p>
+                        <p>2. My mom <input type="text" id="l1-p2-2" class="w-28"> (give) me an apple.</p>
+                        <p>3. We <input type="text" id="l1-p2-3" class="w-28"> (travel) to the beach.</p>
+                        <p>4. I <input type="text" id="l1-p2-4" class="w-28"> (swim) in the pool.</p>
+                        <p>5. The tree <input type="text" id="l1-p2-5" class="w-28"> (grow) very fast.</p>
+                    </div>
+                </div>
+
+                <div class="mb-8 border-2 border-orange-400 rounded-2xl overflow-hidden">
+                    <div class="bg-orange-100 p-3 font-black text-orange-800 text-lg flex flex-wrap gap-2 items-center">
+                        🚨 CHALLENGE! <span class="bg-white px-2 py-1 rounded-full text-sm font-bold border">go - need - hear</span>
+                    </div>
+                    <div class="p-4 text-xl font-bold text-gray-700 leading-loose">
+                        On Sunday we <input type="text" id="l1-p3-1" class="w-24"> to the park. I <input type="text" id="l1-p3-2" class="w-24"> to rest. Suddenly, I <input type="text" id="l1-p3-3" class="w-24"> a bird.
+                    </div>
                 </div>
             </div>
 
-            <!-- Part 3: Challenge -->
-            <div class="mb-10 border-2 border-orange-400 rounded-2xl overflow-hidden">
-                <div class="bg-orange-100 p-3 font-black text-orange-800 text-lg flex items-center gap-2">
-                    🚨 CHALLENGE! 🚨 <span class="text-sm font-normal bg-white px-3 py-1 rounded-full border border-orange-300">go - need - hear - hold</span>
+            <div id="level-2" class="level-section hidden">
+                <div class="mb-8 border-2 border-blue-400 rounded-2xl overflow-hidden">
+                    <div class="bg-blue-100 p-3 font-bold text-blue-800 text-lg">1. Complete the chart (The other 12 verbs) 📝</div>
+                    <table class="w-full text-center border-collapse">
+                        <tr class="bg-blue-50 text-blue-900 border-b-2 border-blue-200">
+                            <th class="p-2 border-r-2 border-blue-200">INFINITIVE</th><th class="p-2 border-r-2 border-blue-200">PAST</th><th class="p-2">REGULAR / IRREGULAR</th>
+                        </tr>
+                        <tbody class="text-lg font-bold">
+                            <tr class="border-b-2 border-blue-100"><td class="p-3 border-r-2 border-blue-100">Open</td><td class="p-3 border-r-2 border-blue-100"><input type="text" id="l2-p1-v1" class="w-28"></td><td class="p-3"><select id="l2-p1-t1"><option value="">...</option><option value="regular">Regular</option><option value="irregular">Irregular</option></select></td></tr>
+                            <tr class="border-b-2 border-blue-100"><td class="p-3 border-r-2 border-blue-100">Get</td><td class="p-3 border-r-2 border-blue-100"><input type="text" id="l2-p1-v2" class="w-28"></td><td class="p-3"><select id="l2-p1-t2"><option value="">...</option><option value="regular">Regular</option><option value="irregular">Irregular</option></select></td></tr>
+                            <tr class="border-b-2 border-blue-100"><td class="p-3 border-r-2 border-blue-100">Study</td><td class="p-3 border-r-2 border-blue-100"><input type="text" id="l2-p1-v3" class="w-28"></td><td class="p-3"><select id="l2-p1-t3"><option value="">...</option><option value="regular">Regular</option><option value="irregular">Irregular</option></select></td></tr>
+                            <tr><td class="p-3 border-r-2 border-blue-100">Lose</td><td class="p-3 border-r-2 border-blue-100"><input type="text" id="l2-p1-v4" class="w-28"></td><td class="p-3"><select id="l2-p1-t4"><option value="">...</option><option value="regular">Regular</option><option value="irregular">Irregular</option></select></td></tr>
+                        </tbody>
+                    </table>
                 </div>
-                <div class="p-6 text-xl font-bold text-gray-700 leading-loose">
-                    On Sunday we <input type="text" id="p3-1" class="w-24 mx-2"> to the park. I <input type="text" id="p3-2" class="w-24 mx-2"> to rest, so I sat on the grass. Suddenly, I <input type="text" id="p3-3" class="w-24 mx-2"> a little bird singing. I <input type="text" id="p3-4" class="w-24 mx-2"> a beautiful flower in my hand.
+
+                <div class="mb-8 border-2 border-pink-400 rounded-2xl overflow-hidden">
+                    <div class="bg-pink-100 p-3 font-bold text-pink-800 text-lg">2. Complete the sentences ✍️</div>
+                    <div class="p-4 space-y-4 text-xl font-bold text-gray-700">
+                        <p>1. I <input type="text" id="l2-p2-1" class="w-28"> (receive) a letter today.</p>
+                        <p>2. My dad <input type="text" id="l2-p2-2" class="w-28"> (sell) his old car.</p>
+                        <p>3. We <input type="text" id="l2-p2-3" class="w-28"> (start) the class.</p>
+                        <p>4. I <input type="text" id="l2-p2-4" class="w-28"> (hurt) my knee.</p>
+                        <p>5. She <input type="text" id="l2-p2-5" class="w-28"> (send) an email.</p>
+                    </div>
+                </div>
+
+                <div class="mb-8 border-2 border-orange-400 rounded-2xl overflow-hidden">
+                    <div class="bg-orange-100 p-3 font-black text-orange-800 text-lg flex flex-wrap gap-2 items-center">
+                        🚨 CHALLENGE! <span class="bg-white px-2 py-1 rounded-full text-sm font-bold border">have - remember - hold</span>
+                    </div>
+                    <div class="p-4 text-xl font-bold text-gray-700 leading-loose">
+                        Yesterday I <input type="text" id="l2-p3-1" class="w-24"> a great time. I <input type="text" id="l2-p3-2" class="w-24"> the song. I <input type="text" id="l2-p3-3" class="w-24"> a flower in my hand.
+                    </div>
                 </div>
             </div>
 
-            <!-- Submit Button -->
-            <div class="text-center mt-10">
-                <button onclick="checkAnswers()" class="bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white font-black text-2xl py-4 px-12 rounded-full shadow-lg transform transition hover:scale-105 active:scale-95">
+            <div id="level-3" class="level-section hidden">
+                <div class="mb-8 border-2 border-blue-400 rounded-2xl overflow-hidden">
+                    <div class="bg-blue-100 p-3 font-bold text-blue-800 text-lg">1. Complete the chart (Mix!) 📝</div>
+                    <table class="w-full text-center border-collapse">
+                        <tr class="bg-blue-50 text-blue-900 border-b-2 border-blue-200">
+                            <th class="p-2 border-r-2 border-blue-200">INFINITIVE</th><th class="p-2 border-r-2 border-blue-200">PAST</th><th class="p-2">REGULAR / IRREGULAR</th>
+                        </tr>
+                        <tbody class="text-lg font-bold">
+                            <tr class="border-b-2 border-blue-100"><td class="p-3 border-r-2 border-blue-100">Sell</td><td class="p-3 border-r-2 border-blue-100"><input type="text" id="l3-p1-v1" class="w-28"></td><td class="p-3"><select id="l3-p1-t1"><option value="">...</option><option value="regular">Regular</option><option value="irregular">Irregular</option></select></td></tr>
+                            <tr class="border-b-2 border-blue-100"><td class="p-3 border-r-2 border-blue-100">Start</td><td class="p-3 border-r-2 border-blue-100"><input type="text" id="l3-p1-v2" class="w-28"></td><td class="p-3"><select id="l3-p1-t2"><option value="">...</option><option value="regular">Regular</option><option value="irregular">Irregular</option></select></td></tr>
+                            <tr class="border-b-2 border-blue-100"><td class="p-3 border-r-2 border-blue-100">Hear</td><td class="p-3 border-r-2 border-blue-100"><input type="text" id="l3-p1-v3" class="w-28"></td><td class="p-3"><select id="l3-p1-t3"><option value="">...</option><option value="regular">Regular</option><option value="irregular">Irregular</option></select></td></tr>
+                            <tr><td class="p-3 border-r-2 border-blue-100">Get</td><td class="p-3 border-r-2 border-blue-100"><input type="text" id="l3-p1-v4" class="w-28"></td><td class="p-3"><select id="l3-p1-t4"><option value="">...</option><option value="regular">Regular</option><option value="irregular">Irregular</option></select></td></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="mb-8 border-2 border-pink-400 rounded-2xl overflow-hidden">
+                    <div class="bg-pink-100 p-3 font-bold text-pink-800 text-lg">2. Complete the sentences ✍️</div>
+                    <div class="p-4 space-y-4 text-xl font-bold text-gray-700">
+                        <p>1. We <input type="text" id="l3-p2-1" class="w-28"> (go) to the cinema.</p>
+                        <p>2. I <input type="text" id="l3-p2-2" class="w-28"> (travel) by plane.</p>
+                        <p>3. The dog <input type="text" id="l3-p2-3" class="w-28"> (grow) a lot.</p>
+                        <p>4. I <input type="text" id="l3-p2-4" class="w-28"> (swim) all morning.</p>
+                        <p>5. My dad <input type="text" id="l3-p2-5" class="w-28"> (give) me a hug.</p>
+                    </div>
+                </div>
+
+                <div class="mb-8 border-2 border-orange-400 rounded-2xl overflow-hidden">
+                    <div class="bg-orange-100 p-3 font-black text-orange-800 text-lg flex flex-wrap gap-2 items-center">
+                        🚨 FINAL CHALLENGE! <span class="bg-white px-2 py-1 rounded-full text-sm font-bold border">know - open - lose - need</span>
+                    </div>
+                    <div class="p-4 text-xl font-bold text-gray-700 leading-loose">
+                        I <input type="text" id="l3-p3-1" class="w-24"> the answer! I <input type="text" id="l3-p3-2" class="w-24"> my book. Oh no! I <input type="text" id="l3-p3-3" class="w-24"> my pencil, so I <input type="text" id="l3-p3-4" class="w-24"> a new one.
+                    </div>
+                </div>
+            </div>
+
+            <div id="success-screen" class="hidden text-center py-10 space-y-6">
+                <h2 class="text-5xl font-black text-green-600 mb-4">¡LO LOGRASTE ANTONIA! 🎉</h2>
+                <div class="flex justify-center mb-6">
+                    <img src="https://images.unsplash.com/photo-1517849845537-4d257902454a?w=400&q=80&auto=format&fit=crop" alt="Cute Pug wrapped in blanket" class="rounded-3xl shadow-2xl border-8 border-yellow-300 transform -rotate-3 hover:rotate-3 transition duration-300">
+                </div>
+                <h3 class="text-3xl font-bold text-purple-600">¡Estos perritos confirman que estás 100% lista!</h3>
+                <p class="text-xl text-gray-700 font-bold">¡Ese 7.0 ya es tuyo! Eres una estudiante increíble. 🥇</p>
+            </div>
+
+            <div class="text-center mt-6" id="button-container">
+                <button id="check-btn" onclick="checkCurrentLevel()" class="bg-blue-500 hover:bg-blue-600 text-white font-black text-2xl py-4 px-12 rounded-full shadow-lg transform transition hover:scale-105">
                     Check Answers! 🚀
+                </button>
+                <button id="next-btn" onclick="goToNextLevel()" class="hidden bg-green-500 hover:bg-green-600 text-white font-black text-2xl py-4 px-12 rounded-full shadow-lg transform transition hover:scale-105">
+                    ¡Siguiente Nivel! ➡️
                 </button>
             </div>
 
@@ -145,47 +172,62 @@
     </div>
 
     <script>
-        function checkAnswers() {
+        let currentLevel = 1;
+        
+        // Strictly uses ONLY the 24 verbs from the provided image
+        const levelData = {
+            1: {
+                total: 12,
+                answers: {
+                    'l1-p1-v1': 'moved', 'l1-p1-t1': 'regular', 'l1-p1-v2': 'kept', 'l1-p1-t2': 'irregular',
+                    'l1-p1-v3': 'pulled', 'l1-p1-t3': 'regular', 'l1-p1-v4': 'knew', 'l1-p1-t4': 'irregular',
+                    'l1-p2-1': 'played', 'l1-p2-2': 'gave', 'l1-p2-3': 'travelled', 'l1-p2-4': 'swam', 'l1-p2-5': 'grew',
+                    'l1-p3-1': 'went', 'l1-p3-2': 'needed', 'l1-p3-3': 'heard'
+                },
+                alts: { 'l1-p2-3': ['travelled', 'traveled'] }
+            },
+            2: {
+                total: 12,
+                answers: {
+                    'l2-p1-v1': 'opened', 'l2-p1-t1': 'regular', 'l2-p1-v2': 'got', 'l2-p1-t2': 'irregular',
+                    'l2-p1-v3': 'studied', 'l2-p1-t3': 'regular', 'l2-p1-v4': 'lost', 'l2-p1-t4': 'irregular',
+                    'l2-p2-1': 'received', 'l2-p2-2': 'sold', 'l2-p2-3': 'started', 'l2-p2-4': 'hurt', 'l2-p2-5': 'sent',
+                    'l2-p3-1': 'had', 'l2-p3-2': 'remembered', 'l2-p3-3': 'held'
+                }, alts: {}
+            },
+            3: {
+                total: 13,
+                answers: {
+                    'l3-p1-v1': 'sold', 'l3-p1-t1': 'irregular', 'l3-p1-v2': 'started', 'l3-p1-t2': 'regular',
+                    'l3-p1-v3': 'heard', 'l3-p1-t3': 'irregular', 'l3-p1-v4': 'got', 'l3-p1-t4': 'irregular',
+                    'l3-p2-1': 'went', 'l3-p2-2': 'travelled', 'l3-p2-3': 'grew', 'l3-p2-4': 'swam', 'l3-p2-5': 'gave',
+                    'l3-p3-1': 'knew', 'l3-p3-2': 'opened', 'l3-p3-3': 'lost', 'l3-p3-4': 'needed'
+                },
+                alts: { 'l3-p2-2': ['travelled', 'traveled'] }
+            }
+        };
+
+        function updateScoreDisplay(score, total) {
+            const scoreBox = document.getElementById('score-box');
+            scoreBox.innerHTML = `${score} / ${total}`;
+            if (score === total) {
+                scoreBox.className = "w-32 h-32 rounded-full border-4 border-green-500 flex items-center justify-center text-4xl font-black text-green-600 transform scale-110 transition-all duration-300 bg-green-100 shadow-lg";
+            } else {
+                scoreBox.className = "w-32 h-32 rounded-full border-4 border-blue-400 flex items-center justify-center text-3xl font-black text-blue-600 bg-blue-50";
+            }
+        }
+
+        function checkCurrentLevel() {
+            const data = levelData[currentLevel];
             let score = 0;
-            const totalPoints = 17;
 
-            // Strict Answers Dictionary based ONLY on the provided image
-            const answers = {
-                // Part 1
-                'p1-v1': 'moved', 'p1-t1': 'regular',
-                'p1-v2': 'kept', 'p1-t2': 'irregular',
-                'p1-v3': 'pulled', 'p1-t3': 'regular',
-                'p1-v4': 'knew', 'p1-t4': 'irregular',
-                
-                // Part 2
-                'p2-1': 'played',
-                'p2-2': 'gave',
-                'p2-3': 'travelled', // British spelling
-                'p2-4': 'swam',
-                'p2-5': 'grew',
-
-                // Part 3
-                'p3-1': 'went',
-                'p3-2': 'needed',
-                'p3-3': 'heard',
-                'p3-4': 'held'
-            };
-
-            const alternatives = {
-                'p2-3': ['travelled', 'traveled'] 
-            };
-
-            for (const [id, correctVal] of Object.entries(answers)) {
+            for (const [id, correctVal] of Object.entries(data.answers)) {
                 const el = document.getElementById(id);
                 const userVal = el.value.trim().toLowerCase();
                 
                 el.classList.remove('correct', 'incorrect');
-
                 let isCorrect = (userVal === correctVal);
-                
-                if (!isCorrect && alternatives[id] && alternatives[id].includes(userVal)) {
-                    isCorrect = true;
-                }
+                if (!isCorrect && data.alts[id] && data.alts[id].includes(userVal)) isCorrect = true;
 
                 if (isCorrect) {
                     el.classList.add('correct');
@@ -195,21 +237,37 @@
                 }
             }
 
-            const scoreBox = document.getElementById('score-box');
-            scoreBox.innerHTML = `${score} / ${totalPoints}`;
-            
-            if (score === totalPoints) {
-                scoreBox.className = "w-32 h-32 rounded-full border-4 border-green-500 flex items-center justify-center text-5xl font-black text-green-600 transform -rotate-12 transition-all duration-500 bg-green-100 shadow-xl";
-                scoreBox.innerHTML = "7.0!";
-                setTimeout(() => alert("¡FELICITACIONES! Tienes un 7.0 🎉🥇 Eres una súper estudiante."), 300);
-            } else if (score >= totalPoints * 0.6) {
-                scoreBox.className = "w-32 h-32 rounded-full border-4 border-blue-500 flex items-center justify-center text-4xl font-black text-blue-600 transform -rotate-12 transition-all duration-500 bg-blue-100";
-                setTimeout(() => alert("¡Muy bien! Estás muy cerca del 7.0. Revisa las que están en rojo y vuelve a intentar. 💪"), 300);
+            updateScoreDisplay(score, data.total);
+
+            if (score === data.total) {
+                document.getElementById('check-btn').classList.add('hidden');
+                document.getElementById('next-btn').classList.remove('hidden');
             } else {
-                scoreBox.className = "w-32 h-32 rounded-full border-4 border-orange-500 flex items-center justify-center text-4xl font-black text-orange-600 transform rotate-12 transition-all duration-500 bg-orange-100";
-                setTimeout(() => alert("¡No te rindas! Sigue practicando los verbos, tú puedes. 🌟"), 300);
+                alert("Te faltan algunas. ¡Revisa las rojas y vuelve a intentar!");
             }
         }
+
+        function goToNextLevel() {
+            document.getElementById(`level-${currentLevel}`).classList.add('hidden');
+            document.getElementById('check-btn').classList.remove('hidden');
+            document.getElementById('next-btn').classList.add('hidden');
+            
+            currentLevel++;
+
+            if (currentLevel <= 3) {
+                document.getElementById(`level-${currentLevel}`).classList.remove('hidden');
+                document.getElementById('level-title').innerText = currentLevel === 2 ? "Level 2: The Other 12 Verbs" : "Level 3: The Final Boss";
+                updateScoreDisplay(0, levelData[currentLevel].total);
+                window.scrollTo(0, 0);
+            } else {
+                document.getElementById('student-info').classList.add('hidden');
+                document.getElementById('button-container').classList.add('hidden');
+                document.getElementById('level-title').innerText = "Mission Accomplished!";
+                document.getElementById('success-screen').classList.remove('hidden');
+            }
+        }
+
+        updateScoreDisplay(0, levelData[1].total);
     </script>
 </body>
 </html>
